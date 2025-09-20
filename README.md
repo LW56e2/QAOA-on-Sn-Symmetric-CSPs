@@ -47,7 +47,7 @@ python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/
 ## Step 5. Install the remaining dependencies
 
 ```powershell
-python -m pip install pennylane==0.42.3 pennylane-lightning==0.42.0 numpy==1.26.4 matplotlib==3.10.5 pip==25.1
+python -m pip install pennylane==0.42.3 pennylane-lightning==0.42.0 numpy==1.26.4 matplotlib==3.10.5
 ```
 
 ---
