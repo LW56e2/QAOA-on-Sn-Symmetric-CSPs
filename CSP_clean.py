@@ -448,7 +448,7 @@ def make_tasks():
         (3, "fix-first-two"),
     ]
     for spec in problem_specs:
-        for n in range(5, 13):
+        for n in range(5, 15):
             if spec_max_ell(spec) > n:
                 # encode a skip record so we can log it consistently (optional)
                 yield ("__skip__", {"spec": spec, "n": n})
@@ -578,6 +578,6 @@ def main(max_workers=None, run_id=None):
             print(f"logged: spec={record.get('spec')}, n={record.get('n')}, p={record.get('p')}, mode={record.get('mode')}")
 
 if __name__ == "__main__":
-    for i in range(10000):
+    for i in range(1000):
         rid = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f") + f"_{i:02d}"
         main(run_id=rid)
