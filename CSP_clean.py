@@ -531,7 +531,9 @@ def main(max_workers=None, run_id=None):
     if run_id is None:
         run_id = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 
-    out_file = f"qaoa_results_{run_id}.jsonl"
+    out_dir = "results"
+    os.makedirs(out_dir, exist_ok=True)
+    out_file = os.path.join(out_dir, f"qaoa_results_{run_id}.jsonl")
 
     # update the module-level seed_base so make_tasks() sees a new base each run
     global seed_base
@@ -576,6 +578,6 @@ def main(max_workers=None, run_id=None):
             print(f"logged: spec={record.get('spec')}, n={record.get('n')}, p={record.get('p')}, mode={record.get('mode')}")
 
 if __name__ == "__main__":
-    for i in range(10):
+    for i in range(10000):
         rid = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f") + f"_{i:02d}"
         main(run_id=rid)
