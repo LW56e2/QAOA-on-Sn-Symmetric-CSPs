@@ -349,6 +349,15 @@ def train_qaoa_layered_torch(
 
     params = torch.cat([gammas0, betas0]).detach().clone().requires_grad_(True)
 
+    # remove jitter for frozen params
+    with torch.no_grad():
+        if mode in ("fix-first", "fix-first-two"):
+            params[0] = g1
+            params[p + 0] = -np.pi / 4
+        if mode == "fix-first-two":
+            params[1] = g1
+            params[p + 1] = -np.pi / 4
+
 
     # Freeze masks
     freeze_mask = torch.zeros(2*p, dtype=torch.bool)
